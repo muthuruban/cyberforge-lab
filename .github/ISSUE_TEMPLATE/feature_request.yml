@@ -1,0 +1,58 @@
+name: "Feature request"
+description: Propose a new capability aligned with the lab-only educational scope.
+title: "[Feature] "
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for safe, educational enhancements.
+        Requests for offensive automation or unauthorised targeting will not be accepted.
+
+  - type: input
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What problem does this feature solve?
+      placeholder: It is hard to quickly compare scenario metadata from the CLI.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe behavior, commands, or docs changes.
+    validations:
+      required: true
+
+  - type: textarea
+    id: value
+    attributes:
+      label: Learning or engineering value
+      description: Explain how this improves educational outcomes or project quality.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - Nice to have
+        - Useful for next phase
+        - High priority
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: scope_check
+    attributes:
+      label: Scope and safety checks
+      options:
+        - label: This request keeps the project lab-only and educational.
+          required: true
+        - label: This request does not add offensive automation.
+          required: true
+        - label: This request does not require real-company or public-target data.
+          required: true

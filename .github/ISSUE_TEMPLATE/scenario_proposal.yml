@@ -1,0 +1,78 @@
+name: "Scenario proposal"
+description: Propose a new fictional training scenario pack or scenario.
+title: "[Scenario] "
+labels: ["scenario", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Scenario proposals must stay fictional, authorised, isolated, and defensive in learning intent.
+
+  - type: input
+    id: scenario_id
+    attributes:
+      label: Proposed scenario ID
+      placeholder: acme-payroll-001
+    validations:
+      required: true
+
+  - type: input
+    id: organisation
+    attributes:
+      label: Fictional organisation name
+      placeholder: Northbridge Retail Group
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: Scenario title
+      placeholder: Suspicious Activity in the StaffHub Portal
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Scenario context
+      description: Describe business context and learner objective.
+    validations:
+      required: true
+
+  - type: textarea
+    id: learning_objectives
+    attributes:
+      label: Learning objectives
+      placeholder: |
+        - Investigate authentication weakness
+        - Review application logs
+        - Propose secure coding remediation
+    validations:
+      required: true
+
+  - type: textarea
+    id: systems
+    attributes:
+      label: Fictional systems and domains
+      description: Use `.test`, `localhost`, or internal Docker service names only.
+      placeholder: |
+        - hrportal.acme.test
+        - db.acme.test
+        - service: payroll-api
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety confirmations
+      options:
+        - label: All organisations, personas, and systems are fictional.
+          required: true
+        - label: The scenario is lab-only and does not target public systems.
+          required: true
+        - label: The scenario avoids malware, credential theft, and persistence mechanisms.
+          required: true
+        - label: AI credentials are not required inside vulnerable containers or VM images.
+          required: true
