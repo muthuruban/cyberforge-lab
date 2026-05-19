@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StaffHub Portal - Profile</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: #f3f6f9;
+        margin: 0;
+      }
+      .container {
+        max-width: 760px;
+        margin: 40px auto;
+        background: #ffffff;
+        border: 1px solid #d9e0e8;
+        border-radius: 10px;
+        padding: 24px;
+      }
+      .muted {
+        color: #5f6e7d;
+      }
+      .meta {
+        background: #f9fbfd;
+        border: 1px solid #e6edf5;
+        border-radius: 8px;
+        padding: 12px;
+        margin-top: 12px;
+      }
+      a {
+        color: #1e5b89;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p><a href="/dashboard">Back to dashboard</a></p>
+      <h1>{{ profile.full_name }}</h1>
+      <p class="muted">{{ profile.role }} - {{ profile.department }}</p>
+
+      <div class="meta">
+        <p><strong>Email:</strong> {{ profile.email }}</p>
+        <p><strong>Record ID:</strong> {{ profile.id }}</p>
+      </div>
+
+      <p class="muted">
+        Viewer: {{ user.full_name }} ({{ user.role }}). This is a training simulation page.
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StaffHub Portal - Dashboard</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: #f4f7fa;
+        margin: 0;
+      }
+      header {
+        background: #153a5b;
+        color: white;
+        padding: 16px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      main {
+        max-width: 980px;
+        margin: 28px auto;
+        padding: 0 16px;
+      }
+      .card {
+        background: white;
+        border: 1px solid #d6dde6;
+        border-radius: 10px;
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        text-align: left;
+        border-bottom: 1px solid #e8edf3;
+        padding: 10px 8px;
+      }
+      a {
+        color: #1e5b89;
+      }
+      .lab {
+        color: #735600;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>StaffHub Dashboard</div>
+      <div>
+        Logged in: {{ user.full_name }} ({{ user.role }}) |
+        <a href="/logout" style="color: #d9ecff">Logout</a>
+      </div>
+    </header>
+    <main>
+      <div class="card">
+        <h2>Current User</h2>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Department:</strong> {{ user.department }}</p>
+        <p class="lab">Scenario hint: review access and session handling controls.</p>
+      </div>
+
+      <div class="card">
+        <h2>Employee Directory</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Department</th>
+              <th>Profile</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for entry in users %}
+            <tr>
+              <td>{{ entry.full_name }}</td>
+              <td>{{ entry.role }}</td>
+              <td>{{ entry.department }}</td>
+              <td><a href="/profile/{{ entry.id }}">Open profile</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>
