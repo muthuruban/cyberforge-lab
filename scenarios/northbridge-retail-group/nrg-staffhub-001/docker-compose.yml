@@ -1,0 +1,24 @@
+services:
+  staffhub:
+    build:
+      context: ./app
+    container_name: cyberforge-nrg-staffhub
+    ports:
+      - "127.0.0.1:8088:8000"
+    environment:
+      STAFFHUB_ENV: lab
+      STAFFHUB_LOG_FILE: /app/logs/staffhub.log
+      STAFFHUB_DB_PATH: /app/data/staffhub.db
+    volumes:
+      - ./logs:/app/logs
+      - staffhub-data:/app/data
+    networks:
+      - nrg-internal
+    restart: unless-stopped
+
+volumes:
+  staffhub-data:
+
+networks:
+  nrg-internal:
+    name: cyberforge-nrg-internal
