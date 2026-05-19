@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cyberforge-lab"
+version = "0.1.0"
+description = "Local-first, safety-first cybersecurity lab orchestrator for educational scenarios"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [
+  { name = "CyberForge Lab Contributors" }
+]
+keywords = ["cybersecurity", "devops", "education", "docker", "python", "labs"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Security",
+  "Topic :: Software Development :: Testing"
+]
+dependencies = [
+  "typer>=0.12.0",
+  "rich>=13.7.0",
+  "PyYAML>=6.0.1"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.2.0",
+  "ruff>=0.6.0"
+]
+
+[project.scripts]
+cyberforge = "cyberforge.main:app"
+
+[tool.setuptools]
+package-dir = { "" = "cli" }
+
+[tool.setuptools.packages.find]
+where = ["cli"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["cli"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
