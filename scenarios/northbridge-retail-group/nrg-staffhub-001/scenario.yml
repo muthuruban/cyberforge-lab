@@ -1,0 +1,88 @@
+id: nrg-staffhub-001
+title: Suspicious Activity in the Northbridge StaffHub Portal
+organisation: Northbridge Retail Group
+sector: Retail and e-commerce
+description: >
+  Northbridge Retail Group is a fictional mid-sized retail organisation operating
+  physical stores and an online ordering platform. Its internal StaffHub Portal
+  supports staff profiles, shift information, and support workflows. The security
+  team observed unusual authentication and administrative access patterns.
+  Learners must review application behaviour, inspect logs, identify weaknesses,
+  and produce a professional defensive security finding.
+systems:
+  - id: nrg-web-01
+    name: StaffHub Portal
+    dns: staffhub.northbridge.test
+    service_name: staffhub
+    role: web-application
+  - id: nrg-db-01
+    name: StaffDB
+    dns: db.northbridge.test
+    role: sqlite-data-store
+  - id: nrg-soc-01
+    name: SOCView
+    dns: soc.northbridge.test
+    role: future-log-analysis-service
+personas:
+  - name: Maya Patel
+    role: SOC Analyst
+  - name: Ethan Brooks
+    role: IT Support Engineer
+  - name: Priya Nair
+    role: HR Manager
+  - name: Oliver Reed
+    role: Store Operations Lead
+  - name: Lena Morris
+    role: Finance Assistant
+  - name: Samir Khan
+    role: Application Developer
+learning_objectives:
+  - Investigate authentication control weaknesses in a business-style web app.
+  - Review application logs for suspicious login and privilege patterns.
+  - Identify secure coding remediation actions for authentication and access logic.
+  - Produce a clear SOC-style finding report using provided templates.
+safety:
+  lab_only: true
+  internet_access: false
+  allowed_domains:
+    - staffhub.northbridge.test
+    - db.northbridge.test
+    - soc.northbridge.test
+    - localhost
+    - staffhub
+  allowed_targets:
+    - staffhub
+    - nrg-web-01
+    - nrg-db-01
+ai:
+  host_only: true
+  providers:
+    - codex
+    - claude
+  notes:
+    - AI support is status-only in Phase 1.
+    - Future AI commands will read workspace artifacts from the host.
+    - AI credentials must never be stored in scenario folders or victim containers.
+scoring:
+  max_points: 100
+  criteria:
+    - name: Identification quality
+      points: 35
+    - name: Log analysis quality
+      points: 25
+    - name: Remediation clarity
+      points: 25
+    - name: Report professionalism
+      points: 15
+report_requirements:
+  template: report-template.md
+  required_sections:
+    - Executive summary
+    - Timeline of observed events
+    - Key weaknesses and evidence
+    - Risk rating rationale
+    - Remediation actions
+lab:
+  provider: docker-compose
+  compose_file: docker-compose.yml
+  access_url: http://127.0.0.1:8088
