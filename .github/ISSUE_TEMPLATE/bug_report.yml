@@ -1,0 +1,82 @@
+name: "Bug report"
+description: Report a defect in CyberForge Lab Phase 0/1 behavior.
+title: "[Bug] "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug.
+        Please keep details focused on authorised, isolated, educational usage only.
+
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: One-sentence description of the issue.
+      placeholder: cyberforge status does not detect a running scenario after up
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - CLI
+        - Scenario loading
+        - Safety policy
+        - Docker orchestration
+        - Docs
+        - CI
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include exact commands and expected sequence.
+      placeholder: |
+        1. cyberforge init
+        2. cyberforge up --scenario nrg-staffhub-001
+        3. cyberforge status
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment details
+      placeholder: |
+        OS:
+        Python:
+        Docker:
+        Docker Compose:
+        cyberforge command:
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: safety_ack
+    attributes:
+      label: Safety confirmation
+      options:
+        - label: I confirm this report is about authorised, isolated, lab-only usage.
+          required: true
+        - label: I confirm no real credentials or sensitive data are included in this issue.
+          required: true
